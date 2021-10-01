@@ -22,28 +22,23 @@ namespace ModernLoginUI
         MyDatabase myDatabase = new MyDatabase();
         public void Mukkerrer()
         {
-            SqlCommand sqlCommand = new SqlCommand("Select * from Tbl_KullaniciBilgi",myDatabase.baglanti());
+            SqlCommand sqlCommand = new SqlCommand("Select * from Tbl_KullaniciBilgi", myDatabase.baglanti());
             SqlDataReader sqlDatareader = sqlCommand.ExecuteReader();
             while (sqlDatareader.Read() == true)
             {
-                if (textBox2.Text == sqlDatareader["Username"].ToString())
+                if (textBox2.Text == sqlDatareader["Username"].ToString() || textBox3.Text == sqlDatareader["Email"].ToString())
                 {
-                    MessageBox.Show("Mükerrer Error ", "Username Kullanılmaktadır", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (textBox3.Text == sqlDatareader["Email"].ToString())
-                {
-                    MessageBox.Show("Mükerrer Error", "Email Kullanilmaktadir", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (textBox2.Text == sqlDatareader["Username"].ToString() && textBox3.Text == sqlDatareader["Email"].ToString())
-                {
-                    MessageBox.Show("Mükerrer Error", "Email Kullanilmaktadir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mükerrer Error", "Email Veya Şifre  Kullanilmaktadir", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                {
+                {            
                     Kayit();
+
                 }
+                break;
             }
             myDatabase.baglanti().Close();
+        
         }
         public void Kayit()
         {
@@ -93,7 +88,6 @@ namespace ModernLoginUI
             {
                 MessageBox.Show("Girdiğiniz Şifreler Eşleşmemektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         private void button3_Click(object sender, EventArgs e)
         {

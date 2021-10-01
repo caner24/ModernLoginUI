@@ -31,7 +31,7 @@ namespace ModernLoginUI
             da.Fill(dt);
             if (dt.Rows.Count>0)
             {
-                MessageBox.Show("Giriş Başarılı", "WELCOME", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show("Giriş Başarılı", "WELCOME", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
